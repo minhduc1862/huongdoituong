@@ -1,51 +1,48 @@
 #include<iostream>
 using namespace std;
 
-class Base
+class point
 {
 	private:
-		int x;
+		float x,y;
 	public:
-		virtual void setvalue(int i)
+		point(float ox=0, float oy=0)
 		{
-			x=i;
-			cout<<"\n Lop co so;";
+			x = ox;
+			y = oy;
 		}
-		virtual int getvalue()
+		virtual void display()
 		{
-			return x;
+			cout<<endl<<"x = "<<x;
+			cout<<endl<<"y = "<<y;
 		}
 };
 
-class Derived:public Base
+class colorpoint : public point
 {
 	private:
-		int y;
+		int color;
 	public:
-		void setvalue(int i)
+		colorpoint(float ox=0,float oy=0,int c=0):point(ox,oy)
 		{
-			y=i;
-			cout<<"\n Lop dan xuat";
+			color = c;
 		}
-		int getvalue()
+		virtual void display()
 		{
-			return y;
+			point::display();
+			cout<<endl<<"color = "<<color;
 		}
 };
 
 int main()
 {
-	Base *p, o1;
-
-	Derived obj, *p1;
-
-	p=&obj; // con tr? l?p co s? tr? d?n d?i tu?ng c?a l?p d?n xu?t
-
-	p->setvalue(5); //nh?n giá tr? c?a l?p d?n xu?t
-
-	p=&o1; //tr? d?n con tr? trong cùng l?p co s?
-
-	p->setvalue(5); //nh?n giá tr? c?a l?p co s?
-
-	cin.get();
+	colorpoint m(1,2,3);
+	m.display();
+	point p(4,5);
+	p.display();
+	point *ptr;
+	ptr = &p;
+	ptr->display();
+	ptr= &m;
+	ptr->display();
 }

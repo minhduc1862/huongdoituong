@@ -18,24 +18,47 @@ class people
 		{
 		}
 		
-		void set()
-		{
-			cout<<"Nhap ten : ";
-			fflush(stdin);
-			getline(cin,ten);
-			cout<<"Nhap tuoi : ";
-			cin>>tuoi;
-			cout<<"Nhap dia chi : ";
-			fflush(stdin);
-			getline(cin,diachi);
-		}
-		void get()
-		{
-			cout<<endl<<"Ten : "<<ten<<endl;
-			cout<<"Tuoi : "<<tuoi<<endl;
-			cout<<"Dia chi : "<<diachi<<endl;
-		}
+//		void set()
+//		{
+//			cout<<"Nhap ten : ";
+//			fflush(stdin);
+//			getline(cin,ten);
+//			cout<<"Nhap tuoi : ";
+//			cin>>tuoi;
+//			cout<<"Nhap dia chi : ";
+//			fflush(stdin);
+//			getline(cin,diachi);
+//		}
+		friend istream& operator >> (istream &,people &);
+//		void get()
+//		{
+//			cout<<endl<<"Ten : "<<ten<<endl;
+//			cout<<"Tuoi : "<<tuoi<<endl;
+//			cout<<"Dia chi : "<<diachi<<endl;
+//		}
+		friend ostream& operator << (ostream &,people &);
 };
+
+istream& operator >> (istream& cin,people &a)
+{
+	cout<<"Nhap ten : ";
+	fflush(stdin);
+	getline(cin,ten);
+	cout<<"Nhap tuoi : ";
+	cin>>tuoi;
+	cout<<"Nhap dia chi : ";
+	fflush(stdin);
+	getline(cin,diachi);
+	return cin;
+}
+
+ostream& operator << (ostream& cout,people &a)
+{
+	cout<<endl<<"Ten : "<<ten<<endl;
+	cout<<"Tuoi : "<<tuoi<<endl;
+	cout<<"Dia chi : "<<diachi<<endl;
+	return cout;
+}
 
 class student : public people
 {
